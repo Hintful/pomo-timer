@@ -195,7 +195,7 @@ class Pomodoro extends React.Component {
           </div>
           <div class="stats">
             Pomos: {this.state.completedPomos}
-            {this.state.completedPomos > 0 && <i class="fas fa-fire"></i>}
+            {this.state.completedPomos > 0 && <span class="emoji">&#x1F345;</span>}
           </div>
           <div class="control-div">
             <div class="top-control-div">
