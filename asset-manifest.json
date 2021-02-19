@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pomo-timer/static/css/main.eb180591.chunk.css",
-    "main.js": "/pomo-timer/static/js/main.4bd263d8.chunk.js",
-    "main.js.map": "/pomo-timer/static/js/main.4bd263d8.chunk.js.map",
+    "main.js": "/pomo-timer/static/js/main.51878828.chunk.js",
+    "main.js.map": "/pomo-timer/static/js/main.51878828.chunk.js.map",
     "runtime-main.js": "/pomo-timer/static/js/runtime-main.3317b4df.js",
     "runtime-main.js.map": "/pomo-timer/static/js/runtime-main.3317b4df.js.map",
     "static/js/2.ae4ccb3f.chunk.js": "/pomo-timer/static/js/2.ae4ccb3f.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.3317b4df.js",
     "static/js/2.ae4ccb3f.chunk.js",
     "static/css/main.eb180591.chunk.css",
-    "static/js/main.4bd263d8.chunk.js"
+    "static/js/main.51878828.chunk.js"
   ]
 }
