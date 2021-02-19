@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Helmet } from 'react-helmet';
 import ReactGA from 'react-ga';
@@ -16,7 +16,17 @@ const DEFAULT_STATE = {
   focusTimer: true,
   settingsOpen: false
 };
-ReactGA.initialize("G-D3Z7LQS3WW");
+
+function usePageViews() {
+  useEffect(() => {
+    if(!window.GA_INIT) {
+      ReactGA.initialize("UA-186165133-1");
+      window.GA_INIT = true;
+    }
+    ReactGA.set({ page: window.location.pathname });
+    ReactGA.pageview(window.location.pathname);
+  }, []);
+}
 
 const TICK_RATE = 1000; // default is 1s/1000ms
 
@@ -52,7 +62,7 @@ class Pomodoro extends React.Component {
         this.audioBeep.play();
         if(this.state.focusTimer) { // Focus session completed
           ReactGA.event({
-            category: 'Pomo Timer User',
+            category: 'Pomo Timer',
             action: 'Completed focus session'
           });
           this.setState(state => ({
@@ -63,7 +73,7 @@ class Pomodoro extends React.Component {
           }));
         } else { // Rest session completed
           ReactGA.event({
-            category: 'Pomo Timer User',
+            category: 'Pomo Timer',
             action: 'Completed rest session'
           });
           this.setState({
@@ -88,7 +98,7 @@ class Pomodoro extends React.Component {
   }
   resume() {
     ReactGA.event({
-      category: 'Pomo Timer User',
+      category: 'Pomo Timer',
       action: 'Pressed start/resume'
     });
     if(this.state.runTimer) { this.setState( { runTimer: false } ); }
@@ -100,14 +110,14 @@ class Pomodoro extends React.Component {
   }
   pause() {
     ReactGA.event({
-      category: 'Pomo Timer User',
+      category: 'Pomo Timer',
       action: 'Pressed pause'
     });
     this.setState( { runTimer: false } );
   }
   reset() {
     ReactGA.event({
-      category: 'Pomo Timer User',
+      category: 'Pomo Timer',
       action: 'Pressed reset'
     });
     this.audioBeep.currentTime = 0;
@@ -125,7 +135,7 @@ class Pomodoro extends React.Component {
   }
   triggerSettings() {
     ReactGA.event({
-      category: 'Pomo Timer User',
+      category: 'Pomo Timer',
       action: 'Clicked settings'
     });
     this.setState(state => ({
@@ -225,6 +235,8 @@ function pad(n, width, z) {
 }
 
 function App() {
+  usePageViews();
+
   return (
     <div className="App">
       <Helmet>
